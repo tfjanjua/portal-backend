@@ -3571,6 +3571,10 @@ namespace Org.Eclipse.TractusX.Portal.Backend.PortalBackend.Migrations.Migration
                         .HasColumnType("text")
                         .HasColumnName("description");
 
+                    b.Property<DateTimeOffset?>("LockExpiryDate")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("lock_expiry_date");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(255)
@@ -3580,6 +3584,11 @@ namespace Org.Eclipse.TractusX.Portal.Backend.PortalBackend.Migrations.Migration
                     b.Property<Guid?>("OfferSubscriptionId")
                         .HasColumnType("uuid")
                         .HasColumnName("offer_subscription_id");
+
+                    b.Property<Guid>("Version")
+                        .IsConcurrencyToken()
+                        .HasColumnType("uuid")
+                        .HasColumnName("version");
 
                     b.HasKey("Id")
                         .HasName("pk_company_service_accounts");
